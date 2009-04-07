@@ -8,15 +8,7 @@ Ruby gem that implements the SM-2 algorithm of SuperMemo. See http://www.superme
   
 == Usage
 
-  i, ef, n = SuperMemo::SM2.i_and_ef_and_n(n, q, prev_i, prev_ef = 2.5)
-
-This is the main algorithm. Use it to figure out the next interval that the item should be recalled (i), the change in the easiness factor (ef), and new value for n.
-
-  do_repeat = SuperMemo::SM2.should_repeat_today(q)
-
-As described in the SM-2 algorithm, anything that is not recalled or recalled with difficulty should be repeated again at the end of the day's learning session. This method, based on the q value given for an item, determines whether it should be repeated.
-
-== Note on variables
+=== Note on variables
 
 The following variables are used:
 
@@ -24,13 +16,24 @@ q - the Quality of the recall (i.e.. was the item recalled or forgotten), as an 
 0-2 represent "completely unknown (0)" to "almost remembered (2)" 
 3-5 represent "barely remembered (3)" to "instantly remembered (5)"
 
-ef - The Easiness Factor of the item being recalled. The smaller the number the harder the item is to remember.
+ef - The Easiness Factor of the item being recalled. The smaller the number the harder the item is to remember. For new items this should be set to 2.5.
 
 i - The scheduled Interval for the item to be recalled, in days. That is, how many days until the item should be recalled to retain it. 
 
 n - The nth iteration of the recall. An integer, starting at 1 for the first time the item is recalled. 
 
 For more background on these variables, see http://www.supermemo.com/english/ol/sm2.htm
+
+=== Code
+
+  i, ef, n = SuperMemo::SM2.i_and_ef_and_n(n, q, prev_i, prev_ef = 2.5)
+
+This is the main algorithm. Use it to figure out the next interval until the item should be recalled (i), the change in the easiness factor (ef), and new value for n.
+
+  do_repeat = SuperMemo::SM2.should_repeat_today(q)
+
+As described in the SM-2 algorithm, anything that is not recalled or recalled with difficulty should be repeated again at the end of the day's learning session. This method, based on the q value given for an item, determines whether it should be repeated.
+
 
 == Notes
 
