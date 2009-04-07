@@ -8,9 +8,7 @@ Ruby gem that implements the SM-2 algorithm of SuperMemo. See http://www.superme
   
 == Usage
 
-=== Note on variables
-
-The following variables are used:
+=== Variables used
 
 q - the Quality of the recall (i.e.. was the item recalled or forgotten), as an integer between 0-5. 
 0-2 represent "completely unknown (0)" to "almost remembered (2)" 
@@ -32,10 +30,9 @@ This is the main algorithm. Use it to figure out the next interval until the ite
 
   do_repeat = SuperMemo::SM2.should_repeat_today(q)
 
-As described in the SM-2 algorithm, anything that is not recalled or recalled with difficulty should be repeated again at the end of the day's learning session. This method, based on the q value given for an item, determines whether it should be repeated.
-
+As described in the SM-2 algorithm, anything that is not recalled or recalled with difficulty should be repeated again at the end of the day's learning session. This method takes the q value of an item and returns whether it should be repeated.
 
 == Notes
 
-Currently this gem only includes the SM-2 version of the SuperMemo algorithm. Although more recent versions of the SuperMemo algorithm exist, some popular open source and commercial alternatives to SuperMemo (such as Mnemosyne) base their algorithms on the SM-2 algorithm, as they judge it a superior algorithm to the more recent iterations.  The author of Mnemosyne (the leading open source alternative) makes the point that there is a conflict of interest underlying commercial products like SuperMemo, in that the companies have a vested interest in claiming the newer algorithms are better regardless of whether they actually are.  
+Currently this gem only includes the SM-2 version of the SuperMemo algorithm. Although more recent versions of the SuperMemo algorithm exist, some popular open source and commercial alternatives to SuperMemo (such as Mnemosyne) base their algorithms on the SM-2 algorithm, as they judge it a superior algorithm to the more recent iterations.  The author of Mnemosyne (the leading open source alternative) makes the point that there is a conflict of interest underlying commercial products like SuperMemo, in that companies have a vested interest in claiming the newer algorithms are better regardless of whether they actually are.  
 
