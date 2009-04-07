@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('supermemo', '0.1.0') do |p|
+Echoe.new('supermemo', '0.1.1') do |p|
   p.description = 'The SuperMemo (version SM-2) algorithm in ruby'
   p.url = 'http://github.com/matholroyd/supermemo'
   p.author = 'Mat Holroyd'
