@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.date = %q{2009-04-07}
   s.description = %q{The SuperMemo (version SM-2) algorithm in ruby}
   s.email = %q{matholroyd+supermemo@gmail.com}
-  s.extra_rdoc_files = ["lib/sm2.rb", "README.rdoc"]
-  s.files = ["lib/sm2.rb", "Manifest", "Rakefile", "README.rdoc", "supermemo.gemspec"]
+  s.extra_rdoc_files = ["lib/supermemo.rb", "README.rdoc"]
+  s.files = ["lib/supermemo.rb", "Manifest", "Rakefile", "README.rdoc", "supermemo.gemspec"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/matholroyd/supermemo}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Supermemo", "--main", "README.rdoc"]
