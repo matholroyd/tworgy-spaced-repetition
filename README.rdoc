@@ -4,7 +4,7 @@ Ruby gem that implements the SM-2 algorithm of SuperMemo. See http://www.superme
 
 == Install
 
-  gem install supermemo --sorce http://gems.github.com
+  gem install matholroyd-supermemo --source http://gems.github.com
   
 == Usage
 
