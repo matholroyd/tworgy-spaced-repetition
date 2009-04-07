@@ -14,7 +14,7 @@ This is the main algorithm. Use it to figure out the next interval that the item
 
   do_repeat = SuperMemo::SM2.should_repeat_today(q)
 
-As described in the SM-2 algorithm, anything this is not recalled or recalled with difficulty should be repeated again at the end of the day's session. This method, based on the q value given for an item, determines whether it should be repeated.
+As described in the SM-2 algorithm, anything that is not recalled or recalled with difficulty should be repeated again at the end of the day's learning session. This method, based on the q value given for an item, determines whether it should be repeated.
 
 == Note on variables
 
