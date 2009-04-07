@@ -10,12 +10,12 @@ Ruby gem that implements the SM-2 algorithm of SuperMemo.
 
 The following variables are used:
 q - the Quality of the recall (i.e.. was the item recalled or forgotten), as an integer between 0-5. 
-    0-2 represent "completely unknown (0)" to "almost remembered (2)"
-    3-5 represent "barely remembered (3)" to "instantly remembered (5)"
-ef - The Easiness Factor of the item being recalled. The smaller the number the harder the item
-    is to remember.
-i - The scheduled Interval for the item to be recalled, in days. That is, how many days until the 
-    item should be recalled to retain it. 
+0-2 represent "completely unknown (0)" to "almost remembered (2)" 
+3-5 represent "barely remembered (3)" to "instantly remembered (5)"
+
+ef - The Easiness Factor of the item being recalled. The smaller the number the harder the item is to remember.
+i - The scheduled Interval for the item to be recalled, in days. That is, how many days until the item should be recalled to retain it. 
+
 n - The nth iteration of the recall. An integer, starting at 1 for the first time the item is recalled. 
 
 For more background on these variables, see http://
