@@ -29,8 +29,8 @@ module SuperMemo
   
     # Items that were forgotten or almost forgotten (scored a grade < 4) should be recalled on the 
     # current day until the grade goes to 4 or more.
-    def self.should_repeat_today(last_q)
-      last_q < 4
+    def self.should_repeat_today(a)
+      a < 4
     end
     
     private 

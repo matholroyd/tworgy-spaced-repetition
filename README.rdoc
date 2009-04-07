@@ -1,6 +1,6 @@
 = SuperMemo
 
-Ruby gem that implements the SM-2 algorithm of SuperMemo.
+Ruby gem that implements the SM-2 algorithm of SuperMemo. See http://www.supermemo.com/english/ol/sm2.htm for more details.
 
 == Install
 
@@ -10,7 +10,11 @@ Ruby gem that implements the SM-2 algorithm of SuperMemo.
 
   i, ef, n = SuperMemo::SM2.i_and_ef_and_n(n, q, prev_i, prev_ef = 2.5)
 
-  do_repeat = SuperMemo::SM2.should_repeat_today(last_q)
+This is the main algorithm. Use it to figure out the next interval that the item should be recalled (i), the change in the easiness factor (ef), and new value for n.
+
+  do_repeat = SuperMemo::SM2.should_repeat_today(q)
+
+As described in the SM-2 algorithm, anything this is not recalled or recalled with difficulty should be repeated again at the end of the day's session. This method, based on the q value given for an item, determines whether it should be repeated.
 
 == Note on variables
 
@@ -26,7 +30,7 @@ i - The scheduled Interval for the item to be recalled, in days. That is, how ma
 
 n - The nth iteration of the recall. An integer, starting at 1 for the first time the item is recalled. 
 
-For more background on these variables, see http://
+For more background on these variables, see http://www.supermemo.com/english/ol/sm2.htm
 
 == Notes
 
