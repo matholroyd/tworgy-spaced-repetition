@@ -9,6 +9,7 @@ Ruby gem that implements the SM-2 algorithm of SuperMemo.
 == Usage
 
 The following variables are used:
+
 q - the Quality of the recall (i.e.. was the item recalled or forgotten), as an integer between 0-5. 
 0-2 represent "completely unknown (0)" to "almost remembered (2)" 
 3-5 represent "barely remembered (3)" to "instantly remembered (5)"
@@ -20,11 +21,11 @@ n - The nth iteration of the recall. An integer, starting at 1 for the first tim
 
 For more background on these variables, see http://
 
-ef = SuperMemo::SM2.new_ef(old_ef, q)
+  ef = SuperMemo::SM2.new_ef(old_ef, q)
 
-i, ef, n = SuperMemo::SM2.i_and_ef_and_n(n, q, prev_i, prev_ef = 2.5)
+  i, ef, n = SuperMemo::SM2.i_and_ef_and_n(n, q, prev_i, prev_ef = 2.5)
 
-do_repeat = SuperMemo::SM2.should_repeat_today(last_q)
+  do_repeat = SuperMemo::SM2.should_repeat_today(last_q)
 
 == Notes
 
