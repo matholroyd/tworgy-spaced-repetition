@@ -41,5 +41,3 @@ module SuperMemo
     end
   end
 end
-
-puts SuperMemo::SM2.i_and_ef_and_n(3, 3, 10)
