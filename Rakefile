@@ -3,7 +3,7 @@ require 'rake'
 require 'echoe'
 
 Echoe.new('supermemo', '0.1.1') do |p|
-  p.description = 'The SuperMemo (version SM-2) algorithm in ruby'
+  p.description = 'The SuperMemo algorithm (version SM-2) in ruby'
   p.url = 'http://github.com/matholroyd/supermemo'
   p.author = 'Mat Holroyd'
   p.email = 'matholroyd+supermemo@gmail.com'
