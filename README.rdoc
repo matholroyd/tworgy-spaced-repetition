@@ -32,7 +32,7 @@ Reset the data to begin with
   fc.quality_of_last_recall => nil  
   fc.next_repetition => Date.today  
 
-Calculate the next interval/date (Note: SM2 expends a number between 0-5)
+Calculate the next interval/date (Note: SM2 expects a number between 0-5)
   
   fc.process_recall_result(4)
 
