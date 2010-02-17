@@ -7,17 +7,18 @@ module SuperMemo
   module SM2
     
     def SM2.included(obj)
-      check_instance_variables(obj)
+      check_instance_methods(obj)
     end
     
     def SM2.extended(obj)
-      check_instance_variables(obj)
+      check_instance_methods(obj)
     end
   
     def reset_spaced_repetition_data
       self.easiness_factor = 2.5  
       self.number_repetitions = 0  
       self.quality_of_last_recall = nil  
+      self.repetition_interval = nil
       self.next_repetition = Date.today  
     end
 
@@ -45,12 +46,13 @@ module SuperMemo
     
     private 
     
-    def SM2.check_instance_variables(obj)
+    def SM2.check_instance_methods(obj)
       begin
         obj.send(:easiness_factor)
         obj.send(:number_repetitions)
         obj.send(:quality_of_last_recall)
         obj.send(:next_repetition)
+        obj.send(:repetition_interval)
       rescue NoMethodError => e
         DBC.assert(false, e.message)
       end

@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "lib/spaced-repetition/sm2.rb",
      "lib/tworgy-spaced-repetition-testing.rb",
      "lib/tworgy-spaced-repetition.rb",
+     "spec/lib/spaced-repetition/sm2_spec.rb",
      "spec/lib/spaced-repetition/testing_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
@@ -33,7 +34,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Spaced repetition algorithms and mixins}
   s.test_files = [
-    "spec/lib/spaced-repetition/testing_spec.rb",
+    "spec/lib/spaced-repetition/sm2_spec.rb",
+     "spec/lib/spaced-repetition/testing_spec.rb",
      "spec/spec_helper.rb"
   ]
 
