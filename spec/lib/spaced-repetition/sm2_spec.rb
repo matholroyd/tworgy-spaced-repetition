@@ -20,10 +20,15 @@ describe SuperMemo::SM2 do
     end
     
     it 'should raise DBC exception if class extended is missing fields' do
+      lambda { nil.extend SuperMemo::SM2 }.should raise_error(DBC::AssertconditionException)
+    end
+    
+    it 'should raise DBC exception if class including is missing fields' do
       lambda {
-        nil.extend SuperMemo::SM2
-      }.should raise_error(DBC)
-      
+        class Temp 
+          include SuperMemo::SM2
+        end
+      }.should raise_error(DBC::AssertconditionException)
     end
     
     it 'should initialize values' do
@@ -40,7 +45,17 @@ describe SuperMemo::SM2 do
       @flash_card.number_repetitions.should == 1
       @flash_card.repetition_interval.should == 1
       @flash_card.next_repetition.should == (Date.today + 1)
-      @flash_card.easiness_factor.should == 2.5
+      @flash_card.easiness_factor.should be_close(2.5, 0.01)
+    end
+
+    it 'should schedule next repetition for 6 days if repetition_interval = 1 and quality_of_last_recall = 4' do
+      @flash_card.process_recall_result(4)
+      @flash_card.process_recall_result(4)
+      
+      @flash_card.number_repetitions.should == 2
+      @flash_card.repetition_interval.should == 6
+      @flash_card.next_repetition.should == (Date.today + 6)
+      @flash_card.easiness_factor.should be_close(2.5, 0.01)
     end
     
   end
