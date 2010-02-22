@@ -2,7 +2,32 @@ require File.expand_path(File.dirname(__FILE__) + '../../../spec_helper')
 
 describe SuperMemo::SM2 do
   
-  describe 'mixin' do
+  describe 'include mixin' do
+
+    it 'should work fine when including' do
+      class Temp
+        attr_accessor :easiness_factor, :number_repetitions, :quality_of_last_recall, :next_repetition, :repetition_interval
+        include SuperMemo::SM2
+      end
+      
+      t = Temp.new
+      t.check_spaced_repetition_methods
+    end
+
+    it 'should raise DBC exception if class including is missing fields' do
+      class Temp2 
+        include SuperMemo::SM2
+      end
+      t = Temp2.new
+
+      lambda {
+        t.check_spaced_repetition_methods
+      }.should raise_error(DBC::AssertconditionException)
+    end
+
+  end
+  
+  describe 'exclude mixin' do
     
     before :each do
       @flash_card = {
@@ -21,14 +46,6 @@ describe SuperMemo::SM2 do
     
     it 'should raise DBC exception if class extended is missing fields' do
       lambda { nil.extend SuperMemo::SM2 }.should raise_error(DBC::AssertconditionException)
-    end
-    
-    it 'should raise DBC exception if class including is missing fields' do
-      lambda {
-        class Temp 
-          include SuperMemo::SM2
-        end
-      }.should raise_error(DBC::AssertconditionException)
     end
     
     it 'should initialize values' do

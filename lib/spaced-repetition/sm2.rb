@@ -6,12 +6,8 @@ module SuperMemo
   # See the README for more information.
   module SM2
     
-    def SM2.included(obj)
-      check_instance_methods(obj)
-    end
-    
     def SM2.extended(obj)
-      check_instance_methods(obj)
+      obj.check_spaced_repetition_methods
     end
   
     def reset_spaced_repetition_data
@@ -23,6 +19,9 @@ module SuperMemo
     end
 
     def process_recall_result(quality_of_recall)
+      DBC.require(quality_of_recall >= 0)
+      DBC.require(quality_of_recall <= 5)
+      
       if quality_of_recall < 3    
         self.number_repetitions = 0 
       else
@@ -43,20 +42,20 @@ module SuperMemo
       
       self.next_repetition = Date.today + repetition_interval
     end
-    
-    private 
-    
-    def SM2.check_instance_methods(obj)
+
+    def check_spaced_repetition_methods
       begin
-        obj.send(:easiness_factor)
-        obj.send(:number_repetitions)
-        obj.send(:quality_of_last_recall)
-        obj.send(:next_repetition)
-        obj.send(:repetition_interval)
+        send(:easiness_factor)
+        send(:number_repetitions)
+        send(:quality_of_last_recall)
+        send(:next_repetition)
+        send(:repetition_interval)
       rescue NoMethodError => e
         DBC.assert(false, e.message)
       end
     end
+    
+    private 
     
     def calculate_easiness_factor(easiness_factor, quality_of_recall)
       q = quality_of_recall
