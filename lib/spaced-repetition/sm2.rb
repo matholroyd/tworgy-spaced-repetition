@@ -15,7 +15,7 @@ module SuperMemo
       self.number_repetitions = 0  
       self.quality_of_last_recall = nil  
       self.repetition_interval = nil
-      self.next_repetition = Date.today  
+      self.next_repetition = nil
     end
 
     def process_recall_result(quality_of_recall)
@@ -44,7 +44,7 @@ module SuperMemo
     end
 
     def scheduled_to_recall?
-      next_repetition <= Date.today
+      !next_repetition.nil? && next_repetition <= Date.today
     end
 
     def check_spaced_repetition_methods

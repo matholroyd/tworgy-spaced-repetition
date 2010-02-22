@@ -53,7 +53,7 @@ describe SuperMemo::SM2 do
       @flash_card.number_repetitions.should == 0  
       @flash_card.repetition_interval.should == nil  
       @flash_card.quality_of_last_recall.should == nil  
-      @flash_card.next_repetition.should == Date.today  
+      @flash_card.next_repetition.should == nil
     end
     
     it 'should schedule next repetition for tomorrow if repetition_interval = 0 and quality_of_last_recall = 4' do
@@ -76,7 +76,22 @@ describe SuperMemo::SM2 do
     end
     
     it 'should report as scheduled to recall (for today)' do
-      @flash_card.should be_scheduled_to_recall
+      @flash_card.next_repetition = Date.today
+      @flash_card.scheduled_to_recall?.should == true
+
+      @flash_card.next_repetition = Date.today - 1
+      @flash_card.scheduled_to_recall?.should == true
+    end
+    
+    it 'should not be scheduled to recall' do
+      @flash_card.next_repetition = nil
+      @flash_card.scheduled_to_recall?.should == false
+
+      @flash_card.next_repetition = Date.today + 1
+      @flash_card.scheduled_to_recall?.should == false
+
+      @flash_card.next_repetition = Date.today + 99
+      @flash_card.scheduled_to_recall?.should == false
     end
     
   end
