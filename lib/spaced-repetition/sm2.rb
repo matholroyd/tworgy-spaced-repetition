@@ -43,6 +43,10 @@ module SuperMemo
       self.next_repetition = Date.today + repetition_interval
     end
 
+    def scheduled_to_recall?
+      next_repetition <= Date.today
+    end
+
     def check_spaced_repetition_methods
       begin
         send(:easiness_factor)

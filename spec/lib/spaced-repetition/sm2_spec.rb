@@ -75,6 +75,10 @@ describe SuperMemo::SM2 do
       @flash_card.easiness_factor.should be_close(2.5, 0.01)
     end
     
+    it 'should report as scheduled to recall (for today)' do
+      @flash_card.should be_scheduled_to_recall
+    end
+    
   end
 
 
