@@ -16,6 +16,7 @@ module SuperMemo
       self.quality_of_last_recall = nil  
       self.repetition_interval = nil
       self.next_repetition = nil
+      self.last_studied = nil
     end
 
     def process_recall_result(quality_of_recall)
@@ -26,23 +27,28 @@ module SuperMemo
       
       if quality_of_recall < 3    
         self.number_repetitions = 0 
-      else
-        self.number_repetitions += 1
-        self.easiness_factor = calculate_easiness_factor(easiness_factor, quality_of_recall)
-      end
-      
-      case number_repetitions
-      when 0
         self.repetition_interval = 0
-      when 1
-        self.repetition_interval = 1
-      when 2
-        self.repetition_interval = 6
       else
-        self.repetition_interval = repetition_interval * easiness_factor
+        self.easiness_factor = calculate_easiness_factor(easiness_factor, quality_of_recall)
+      
+        if quality_of_recall == 3
+          self.repetition_interval = 0
+        else
+          self.number_repetitions += 1
+
+          case number_repetitions
+          when 1
+            self.repetition_interval = 1
+          when 2
+            self.repetition_interval = 6
+          else
+            self.repetition_interval = repetition_interval * easiness_factor
+          end
+        end
       end
       
       self.next_repetition = Date.today + repetition_interval
+      self.last_studied = Date.today
     end
 
     def scheduled_to_recall?
@@ -56,6 +62,7 @@ module SuperMemo
         send(:quality_of_last_recall)
         send(:next_repetition)
         send(:repetition_interval)
+        send(:last_studied)
       rescue NoMethodError => e
         DBC.assert(false, e.message)
       end
